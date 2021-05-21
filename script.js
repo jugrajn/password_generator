@@ -22,7 +22,11 @@ function writePassword() {
   //First ask how long your password
   prompt(lengthPrompt);
   // Validate if user inputes integer between 8 and 128 characters
-  
+  var length=parseInt(prompt(lengthPrompt))
+
+  if(length<8 || length>128) {
+    prompt("Must be a number between 8 and 128");
+  } else {
   // Confirm if user wants lowercase alphabet
   window.confirm(lowerPrompt);
   //Confirm if user wants uppercase alphabet
@@ -31,6 +35,7 @@ function writePassword() {
   window.confirm(numericPrompt);
   //Confirm if user wants special characters
   window.confirm(specialPrompt);
+  }
 
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
