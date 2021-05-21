@@ -34,21 +34,35 @@ function writePassword() {
   } else {
     // Continue with function
   // Confirm if user wants lowercase alphabet
-  window.confirm(lowerPrompt);
+  var lowerQuestion = window.confirm(lowerPrompt);
   //Confirm if user wants uppercase alphabet
-  window.confirm(upperPrompt);
+  var upperQuestion = window.confirm(upperPrompt);
   //Confirm if user wants numerbers in password
-  window.confirm(numericPrompt);
+  var numericQuestion = window.confirm(numericPrompt);
   //Confirm if user wants special characters
-  window.confirm(specialPrompt);
+  var specialQuestion = window.confirm(specialPrompt);
   }
+
+  
+  // What if no character types are chosen? Must select atleast 1 character type. 
+  if (lowerQuestion === false && upperQuestion === false && numericQuestion === false && specialQuestion === false) {
+      alert("Password generation impossible. Must include one character type");
+      writePassword();
+    } else {
+    generatePassword()
+  }
+  
+
+
   //Make a condition if each prompt is true, randomly select a value from object character.keys and add to variable "password"
 
   // Run these conditions in a loop until "password" matches the "length" inputed by user.
   
-  
+  function generatePassword()
+
 
   var password = generatePassword();
+
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
