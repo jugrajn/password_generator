@@ -24,9 +24,10 @@ function writePassword() {
   // Validate if user inputes integer between 8 and 128 characters
   var length=parseInt(prompt(lengthPrompt))
 
-  if(length<8 || length>128) {
+  if(length<8 || length>128 || length == "") {    // Problem asks for correct number twice???
     prompt("Must be a number between 8 and 128");
   } else {
+    // Continue with function
   // Confirm if user wants lowercase alphabet
   window.confirm(lowerPrompt);
   //Confirm if user wants uppercase alphabet
@@ -36,6 +37,11 @@ function writePassword() {
   //Confirm if user wants special characters
   window.confirm(specialPrompt);
   }
+  //Make a condition if each prompt is true, randomly select a value from object character.keys and add to variable "password"
+
+  // Run these conditions in a loop until "password" matches the "length" inputed by user.
+  
+  
 
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
