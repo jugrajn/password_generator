@@ -20,12 +20,17 @@ var characters = {
 // Write password to the #password input
 function writePassword() {
   //First ask how long your password
-  prompt(lengthPrompt);
+  var length=parseInt(prompt(lengthPrompt));
+  
   // Validate if user inputes integer between 8 and 128 characters
-  var length=parseInt(prompt(lengthPrompt))
+  
 
-  if(length<8 || length>128 || length == "") {    // Problem asks for correct number twice???
-    prompt("Must be a number between 8 and 128");
+  if(length<8 || length>128 || length ===[]) {    // Problem asks for correct number twice???
+    alert("Must be a number between 8 and 128");
+    writePassword()
+  } else if (isNaN(length)) {
+    alert("Password length must be typed numerically")
+    writePassword();
   } else {
     // Continue with function
   // Confirm if user wants lowercase alphabet
