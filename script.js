@@ -9,11 +9,11 @@ var upperPrompt = "Do you want uppercase?"
 var numericPrompt = "Do you want numeric?"
 var specialPrompt = "Do you want special characters?"
 
-var characters = {
-  upper: "ABCDEFGHIJKLMNOPQRSTUVWXYZ", //26 length
-  lower: "abcdefghijklmnopqrstuvwxyz", // 26 length
-  number: "0123456789", // 10 length
-  special: "!@$%^&*()_", // 11 length
+var character = {
+  upper: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"],
+  lower: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"],
+  number: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"], 
+  special: ["!", "@", "$", "%", "^", "&", "*", "(", ")", "_"],
 };
 
 
@@ -32,7 +32,8 @@ function writePassword() {
     alert("Password length must be typed numerically")
     writePassword();
   } else {
-    // Continue with function
+    
+  
   // Confirm if user wants lowercase alphabet
   var lowerQuestion = window.confirm(lowerPrompt);
   //Confirm if user wants uppercase alphabet
@@ -58,8 +59,33 @@ function writePassword() {
 
   // Run these conditions in a loop until "password" matches the "length" inputed by user.
   
-  function generatePassword()
+  function generatePassword() {
+    var newPassword = [];
+    var question = writePassword();
+    var finalPass = "";
 
+    if (lowerQuestion === true ) {
+      for (var x of character.lower) {
+        newPassword.push(x); }
+      }
+    if (upperQuestion === true) {
+      for (var x of character.upper) {
+        newPassword.push(x); }
+      }
+    if (numericQuestion === true) {
+      for (var x of character.number) {
+        newPassword.push(x); }
+      }
+    if (specialQuestion === true) {
+      for (var x of character.special) {
+        newPassword.push(x); }
+      }
+    for ( var x = 0; x < question.length; x++) {
+      finalPass +- newPassword[Math.floor(Math.random()* length)]
+    }
+    console.log(finalPass);
+    return finalPass;
+  }
 
   var password = generatePassword();
 
