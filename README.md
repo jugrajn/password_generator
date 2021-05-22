@@ -14,7 +14,7 @@
 ## Deployed Application
 
 * Link: https://jugrajn.github.io/password_generator/ 
-    - Page is not fully functional, still working on logic and code
+FULLY FUNCTIONAL!
 
 ## Screenshot
 ![](/passwordGeneratorScreenshot.png)
