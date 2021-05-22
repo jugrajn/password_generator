@@ -31,9 +31,7 @@ function writePassword() {
   } else if (isNaN(length)) {
     alert("Password length must be typed numerically")
     writePassword();
-  } else {
-    
-  
+  } else { 
   // Confirm if user wants lowercase alphabet
   var lowerQuestion = window.confirm(lowerPrompt);
   //Confirm if user wants uppercase alphabet
@@ -44,56 +42,69 @@ function writePassword() {
   var specialQuestion = window.confirm(specialPrompt);
   }
 
-  
-  // What if no character types are chosen? Must select atleast 1 character type. 
+  //Object created to call back in other function
+  var promptOptions = {
+    length: length,
+    lowerQuestion: lowerQuestion,
+    upperQuestion: upperQuestion,
+    numericQuestion: numericQuestion,
+    specialQuestion: specialQuestion
+  };
+// What if no character types are chosen? Must select atleast 1 character type. 
   if (lowerQuestion === false && upperQuestion === false && numericQuestion === false && specialQuestion === false) {
-      alert("Password generation impossible. Must include one character type");
-      writePassword();
-    } else {
-    generatePassword()
+    alert("Password generation impossible. Must include one character type");
+    return;}
+    else {
+      console.log(promptOptions);
+      return promptOptions;
+      //generatePassword(promptOptions)
+    }
   }
   
-
+  
 
   //Make a condition if each prompt is true, randomly select a value from object character.keys and add to variable "password"
-
   // Run these conditions in a loop until "password" matches the "length" inputed by user.
-  
+  //alternative generatePassword(nameofParameter example like question)
+
   function generatePassword() {
     var newPassword = [];
     var question = writePassword();
+    console.log(question)
     var finalPass = "";
 
-    if (lowerQuestion === true ) {
-      for (var x of character.lower) {
-        newPassword.push(x); }
+    if (question.lowerQuestion) {
+      for (var i of character.lower) {
+        newPassword.push(i); }
       }
-    if (upperQuestion === true) {
-      for (var x of character.upper) {
-        newPassword.push(x); }
+    if (question.upperQuestion === true) {
+      for (var i of character.upper) {
+        newPassword.push(i); }
       }
-    if (numericQuestion === true) {
-      for (var x of character.number) {
-        newPassword.push(x); }
+    if (question.numericQuestion === true) {
+      for (var i of character.number) {
+        newPassword.push(i); }
       }
-    if (specialQuestion === true) {
-      for (var x of character.special) {
-        newPassword.push(x); }
+    if (question.specialQuestion === true) {
+      for (var i of character.special) {
+        newPassword.push(i); }
       }
-    for ( var x = 0; x < question.length; x++) {
-      finalPass +- newPassword[Math.floor(Math.random()* length)]
-    }
+    for ( var i = 0; i < question.length; i++) {
+      finalPass += newPassword[Math.floor(Math.random()* newPassword.length)];
+      }
     console.log(finalPass);
-    return finalPass;
+      return finalPass;
   }
 
+function init(){
   var password = generatePassword();
 
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
 
+
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", init);
+
